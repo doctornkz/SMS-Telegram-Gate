@@ -11,17 +11,16 @@ import android.provider.Telephony;
 public class SmsListener extends BroadcastReceiver {
 
     private SharedPreferences preferences;
-    Parameters parameters;
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.d(parameters.TAG, "SMSGate: onReceive");
+        Log.d(Parameters.TAG, "SMSGate: onReceive");
 
         try{
             if (Telephony.Sms.Intents.SMS_RECEIVED_ACTION.equals(intent.getAction())) {
                 for (SmsMessage smsMessage : Telephony.Sms.Intents.getMessagesFromIntent(intent)) {
                     String messageBody = smsMessage.getMessageBody();
-                    new TelegramNotifier().execute("Mobile phone connected", parameters.TELEGRAMID, parameters.BOTID, parameters.API);
-                    Log.d(parameters.TAG, " Message:" + messageBody);
+                    new TelegramNotifier().execute(messageBody, Parameters.TELEGRAMID, Parameters.BOTID, Parameters.API);
+                    Log.d(Parameters.TAG, " Message:" + messageBody);
 
                 }
             }

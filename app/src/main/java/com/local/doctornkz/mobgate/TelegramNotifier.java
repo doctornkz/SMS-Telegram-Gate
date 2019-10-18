@@ -12,8 +12,6 @@ import java.net.URLConnection;
 
 public class TelegramNotifier extends AsyncTask<String, Void, Boolean> {
 
-    String TAG = "SMSGate:SmsListener";
-
     @Override
     protected Boolean doInBackground(String... params) {
         String text = params[0];
@@ -23,7 +21,7 @@ public class TelegramNotifier extends AsyncTask<String, Void, Boolean> {
 
         try {
             urlString = String.format(urlString, apiToken, chatId, text);
-            Log.d(TAG, "SMSGate message :" + urlString);
+            Log.d(Parameters.TAG, "SMSGate message :" + urlString);
             URL url = new URL(urlString);
 
             URLConnection conn = url.openConnection();
@@ -31,11 +29,11 @@ public class TelegramNotifier extends AsyncTask<String, Void, Boolean> {
                     conn.getInputStream()));
             String inputLine;
             while ((inputLine = in.readLine()) != null)
-                Log.d(TAG, inputLine);
+                Log.d(Parameters.TAG, inputLine);
             in.close();
         } catch (Exception e) {
-            Log.d(TAG, e.toString());
-            Log.d(TAG, "SMSGate : Can't send message");
+            Log.d(Parameters.TAG, e.toString());
+            Log.d(Parameters.TAG, "SMSGate : Can't send message");
         }
         return Boolean.TRUE;
     }

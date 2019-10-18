@@ -21,7 +21,6 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private static final int PERMISSIONS_REQUEST_RECEIVE_SMS = 0;
-    Parameters parameters;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         requestPermission(Manifest.permission.RECEIVE_SMS, PERMISSIONS_REQUEST_RECEIVE_SMS);
 
-        Log.d(parameters.TAG, "Created step");
+        Log.d(Parameters.TAG, "Created step");
         Intent sendIntent = new Intent();
         Context context = this;
 
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         // TODO: Disable gate
         SmsListener smsListener = new SmsListener();
         smsListener.onReceive(context, sendIntent);
-        Log.d(parameters.TAG, "Created step, exit");
+        Log.d(Parameters.TAG, "Created step, exit");
 
     }
 
@@ -56,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
                 Toast.makeText(this, "Granting permission is necessary!", Toast.LENGTH_LONG).show();
-                Log.d(parameters.TAG, "Request permissions step");
+                Log.d(Parameters.TAG, "Request permissions step");
 
             } else {
 
@@ -76,10 +75,10 @@ public class MainActivity extends AppCompatActivity {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(this, "Granting permission : Success", Toast.LENGTH_LONG).show();
-                    Log.d(parameters.TAG, "Result permission request step, success");
+                    Log.d(Parameters.TAG, "Result permission request step, success");
                 } else {
                     Toast.makeText(this, "Granting permission : Declined", Toast.LENGTH_LONG).show();
-                    Log.d(parameters.TAG, "Result permission request step, decline");
+                    Log.d(Parameters.TAG, "Result permission request step, decline");
                 }
             }
         }
@@ -92,10 +91,10 @@ public class MainActivity extends AppCompatActivity {
         Button button = findViewById(R.id.testMessage);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                new TelegramNotifier().execute("Mobile phone connected", parameters.TELEGRAMID, parameters.BOTID, parameters.API);
+                new TelegramNotifier().execute("Mobile phone connected", Parameters.TELEGRAMID, Parameters.BOTID, Parameters.API);
             }
         });
-        String Message = "TgID:" + parameters.TELEGRAMID;
+        String Message = "TgID:" + Parameters.TELEGRAMID;
 
         TextView textView = findViewById(R.id.myId);
 
@@ -115,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
         */
 
-        Log.d(parameters.TAG, "onStart:Outbound from switch.");
+        Log.d(Parameters.TAG, "onStart:Outbound from switch.");
 
     }
 

@@ -26,3 +26,13 @@ build.gradle
 gradle.properties
 gradlew.bat
 settings.gradle
+caches
+codeStyles
+gradle.xml
+libraries
+misc.xml
+modules.xml
+runConfigurations.xml
+vcs.xml
+workspace.xml
+.idea/.name
