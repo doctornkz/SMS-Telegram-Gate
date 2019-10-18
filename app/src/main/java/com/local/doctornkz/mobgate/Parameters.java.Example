@@ -1,0 +1,11 @@
+package com.local.doctornkz.mobgate;
+
+class Parameters {
+
+    String TAG = "SMSGate:MainActivity";
+    String TELEGRAMID = "<YOUR TELEGRAM ID>";
+    String BOTID = "YOUR TELEGRAM BOT ID";
+    String API = "https://api.telegram.org/";
+
+
+}

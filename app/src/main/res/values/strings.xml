@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="app_name">MobGate</string>
+    <string name="myId">TgID:</string>
+    <string name="testMessage">Test Message</string>
+
+</resources>
